@@ -1,6 +1,11 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -23,4 +28,164 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */ 
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 190 95% 42%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 190 90% 55%;
+
+    --secondary: 200 85% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 94%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 15 90% 62%;
+    --accent-foreground: 0 0% 100%;
+    --accent-glow: 20 95% 70%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 88%;
+    --input: 214 32% 91%;
+    --ring: 190 95% 42%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(190 95% 42%), hsl(200 85% 55%));
+    --gradient-accent: linear-gradient(135deg, hsl(15 90% 62%), hsl(25 95% 70%));
+    --gradient-mesh: radial-gradient(at 0% 0%, hsl(190 95% 42% / 0.15) 0px, transparent 50%),
+                     radial-gradient(at 100% 0%, hsl(15 90% 62% / 0.1) 0px, transparent 50%),
+                     radial-gradient(at 100% 100%, hsl(200 85% 55% / 0.15) 0px, transparent 50%),
+                     radial-gradient(at 0% 100%, hsl(190 90% 55% / 0.1) 0px, transparent 50%);
+
+    /* Shadows */
+    --shadow-primary: 0 10px 40px -10px hsl(190 95% 42% / 0.3);
+    --shadow-accent: 0 10px 30px -10px hsl(15 90% 62% / 0.25);
+    --shadow-card: 0 4px 20px -4px hsl(222 47% 11% / 0.1);
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 222 47% 7%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 190 95% 52%;
+    --primary-foreground: 222 47% 11%;
+    --primary-glow: 190 90% 65%;
+
+    --secondary: 200 85% 60%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 15 90% 62%;
+    --accent-foreground: 222 47% 11%;
+    --accent-glow: 20 95% 70%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 190 95% 52%;
+
+    /* Gradients for dark mode */
+    --gradient-primary: linear-gradient(135deg, hsl(190 95% 52%), hsl(200 85% 60%));
+    --gradient-accent: linear-gradient(135deg, hsl(15 90% 62%), hsl(25 95% 70%));
+    --gradient-mesh: radial-gradient(at 0% 0%, hsl(190 95% 52% / 0.2) 0px, transparent 50%),
+                     radial-gradient(at 100% 0%, hsl(15 90% 62% / 0.15) 0px, transparent 50%),
+                     radial-gradient(at 100% 100%, hsl(200 85% 60% / 0.2) 0px, transparent 50%),
+                     radial-gradient(at 0% 100%, hsl(190 90% 65% / 0.15) 0px, transparent 50%);
+
+    --shadow-primary: 0 10px 40px -10px hsl(190 95% 52% / 0.4);
+    --shadow-accent: 0 10px 30px -10px hsl(15 90% 62% / 0.3);
+    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
 }
